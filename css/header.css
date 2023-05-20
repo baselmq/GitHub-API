@@ -1,8 +1,27 @@
 /* -------------------------*** Header ***------------------------- */
+:root {
+  /* Light mode colors */
+  --light-icon: url("../assets/icon/sun.svg");
+
+  /* Dark mode colors */
+  --dark-icon: url("../assets/icon/moon.svg");
+}
+
+/* Dark mode */
+body.dark-mode {
+  --light-icon: var(--dark-icon);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text-color);
+}
 header {
   background-color: #161b22;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 30px;
 }
 
@@ -83,6 +102,16 @@ a {
   height: 20px;
   border-radius: 50%;
 }
+#dark-mode,
+#dark-mode-mobile {
+  background-image: var(--light-icon);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: 0.5s;
+}
 .nav-right {
   display: flex;
 }
@@ -97,10 +126,6 @@ a {
 .nav-right li img {
   margin-left: 2px;
 }
-#dark-img {
-  width: 20px;
-  height: 20px;
-}
 .mobile-right {
   display: none;
 }
@@ -109,6 +134,7 @@ a {
   justify-content: space-between;
   width: 40px;
 }
+
 @media (max-width: 768px) {
   header {
     padding: 0 15px;
@@ -171,5 +197,73 @@ a {
   }
   .mobile-right {
     display: block;
+  }
+}
+
+/* ----------*** toast ***---------- */
+#toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #ff4640;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: #ffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  position: absolute;
+  z-index: 1;
+  right: 50%;
+  top: 50px;
+  transform: translate(50%, 50%);
+  font-size: 16px;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
   }
 }

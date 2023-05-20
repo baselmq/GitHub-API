@@ -15,6 +15,11 @@ const clientID = "e9d4d0c3f60e969327c8";
 const clientSecret = "4c941d46fb9b76e5d0b75a56122965bab8fb0947";
 const baseUrl = "https://api.github.com/";
 
+// message toast
+const messageEmpty = "Please enter a username";
+const messageNotFound = "Username not found";
+const messageNoRepositories = "There is no repositories";
+
 // load user
 const user = "baselmq";
 getUser(user);
@@ -26,6 +31,7 @@ form.addEventListener("submit", async function (e) {
   if (user != "") {
     getUser(user);
   } else {
+    toast(messageEmpty);
   }
 });
 
@@ -59,6 +65,7 @@ function getUser(user) {
         })
         .catch((error) => {
           console.error(error);
+          toast(messageNotFound);
         });
 
       // ------------------------------*** Get repositories ***------------------------------
@@ -84,10 +91,12 @@ function getUser(user) {
         })
         .catch((error) => {
           console.error(error);
+          toast(messageNoRepositories);
         });
     })
     .catch((error) => {
       console.error(error);
+      toast(messageNotFound);
     });
 }
 
@@ -107,4 +116,15 @@ function dotLanguageColor(lang) {
     default:
       return "#00B4AB00";
   }
+}
+
+// ----------------------*** toast ***----------------------
+function toast(message, color = "#ff4640") {
+  var x = document.getElementById("toast");
+  x.className = "show";
+  x.innerText = message;
+  x.style.backgroundColor = color;
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }

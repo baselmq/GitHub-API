@@ -20,7 +20,6 @@ const followersOne = document.querySelectorAll(".followers")[0];
 const followersTwo = document.querySelectorAll(".followers")[1];
 const closeLeft = document.querySelectorAll(".close")[0];
 const closeRight = document.querySelectorAll(".close")[1];
-
 const confettiGen = document.getElementById("my-canvas");
 
 // responsive
@@ -30,8 +29,10 @@ var smallScreenSize = window.matchMedia(
 );
 
 // message toast
-const messageEmpty = "Please enter a username";
+const messageEmpty = "Please enter two usernames";
 const messageNotFound = "Username not found";
+const messageEnterRight = "Please press Enter in the input field on the right";
+const messageEnterLeft = "Please press Enter in the input field on the left";
 
 // Search users
 const clientID = "e9d4d0c3f60e969327c8";
@@ -41,27 +42,27 @@ const baseUrl = "https://api.github.com/";
 // ----------------------*** Form One ***----------------------
 formOne.addEventListener("submit", function (e) {
   e.preventDefault();
-  const checkInputOne = inputOne.value.trim();
-
-  if (checkInputOne != "")
-    getData(inputOne, userOne, imgOne, reposOne, followingOne, followersOne);
-  else toast(messageEmpty);
+  getData(inputOne, userOne, imgOne, reposOne, followingOne, followersOne);
 });
 
 // ----------------------*** Form Two ***----------------------
 formTwo.addEventListener("submit", function (e) {
   e.preventDefault();
-  const checkInputTwo = inputTwo.value.trim();
-
-  if (checkInputTwo != "")
-    getData(inputTwo, userTwo, imgTwo, reposTwo, followingTwo, followersTwo);
-  else toast(messageEmpty);
+  getData(inputTwo, userTwo, imgTwo, reposTwo, followingTwo, followersTwo);
 });
 
 // ----------------------*** Button Comparison ***----------------------
 btnComparison.addEventListener("click", function () {
-  if (inputOne.value.trim() != "" && inputTwo.value.trim() != "") checkWinner();
-  else toast("Please enter two usernames");
+  if (inputOne.value.trim() != "" && inputTwo.value.trim() != "") {
+    if (inputOne.classList.contains("data-exist")) {
+      if (inputTwo.classList.contains("data-exist")) checkWinner();
+      else toast(messageEnterRight, "#709193");
+    } else {
+      toast(messageEnterLeft, "#5c6bc0");
+    }
+  } else {
+    toast(messageEmpty);
+  }
 });
 
 // ----------------------*** close ***----------------------
@@ -99,6 +100,7 @@ function getData(input, username, img, repositories, following, followers) {
 
           if (input.value.trim() != "") {
             input.setAttribute("data-repos", reposCount);
+            input.classList.add("data-exist");
           }
         })
         .catch((error) => {
@@ -181,10 +183,11 @@ function setTieStyles(size) {
   vsComparison.style.fontSize = size;
 }
 // ----------------------*** toast ***----------------------
-function toast(message) {
+function toast(message, color = "#ff4640") {
   var x = document.getElementById("toast");
   x.className = "show";
   x.innerText = message;
+  x.style.backgroundColor = color;
   setTimeout(function () {
     x.className = x.className.replace("show", "");
   }, 3000);

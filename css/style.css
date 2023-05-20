@@ -6,6 +6,7 @@
   --secondary-color: #7d8590;
   --border-color: #c2c3c5;
   --button-color: #f6f8fa;
+  --light-icon: url("../assets/icon/sun.svg");
 
   /* Dark mode colors */
   --background-color-dark: #0d1117;
@@ -14,6 +15,7 @@
   --secondary-color-dark: #7d8590;
   --border-color-dark: #33383f;
   --button-color-dark: #21262d;
+  --dark-icon: url("../assets/icon/moon.svg");
 }
 
 /* Dark mode */
@@ -24,6 +26,7 @@ body.dark-mode {
   --secondary-color: var(--secondary-color-dark);
   --border-color: var(--border-color-dark);
   --button-color: var(--button-color-dark);
+  --light-icon: var(--dark-icon);
 }
 
 * {
@@ -37,22 +40,14 @@ body {
   background-color: var(--background-color);
 }
 /* -------------------------*** Body ***------------------------- */
+
 .main {
   background-color: var(--background-color);
   padding: 40px 140px;
   display: flex;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   gap: 18px;
   position: relative;
-  /* height: 95vh; */
 }
-/* .space-bottom {
-  padding: 290px 0;
-} */
-/* .sidebar {
-  grid-column: 1/2;
-  color: var(--text-color);
-} */
 
 .profile-user > img {
   position: relative;
@@ -129,7 +124,7 @@ body {
 
 .repositories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
   gap: 15px;
   color: var(--accent-color);
 }

@@ -1,8 +1,3 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const darkMode = document.getElementById("dark-mode");
-const darkModeMobile = document.getElementById("dark-mode-mobile");
-
 const devRight = document.getElementsByClassName("right")[0];
 const devLeft = document.getElementsByClassName("left")[0];
 const devCenter = document.getElementsByClassName("center")[0];
@@ -27,7 +22,6 @@ const closeLeft = document.querySelectorAll(".close")[0];
 const closeRight = document.querySelectorAll(".close")[1];
 
 const confettiGen = document.getElementById("my-canvas");
-const body = document.body;
 
 // responsive
 var mobileScreenSize = window.matchMedia("(max-width: 700px)");
@@ -77,45 +71,6 @@ closeLeft.addEventListener("click", function () {
 closeRight.addEventListener("click", function () {
   window.location.reload();
 });
-// ----------------------*** Dark Mode ***----------------------
-darkMode.addEventListener("click", function () {
-  body.classList.toggle("dark-mode");
-  setThemeInLocalStorage();
-});
-darkModeMobile.addEventListener("click", function () {
-  body.classList.toggle("dark-mode");
-  setThemeInLocalStorage();
-});
-
-function setThemeInLocalStorage() {
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("dark-mode", "dark");
-  } else {
-    localStorage.setItem("dark-mode", "light");
-  }
-}
-
-window.addEventListener("load", function () {
-  if (localStorage.length == 0) {
-    localStorage.setItem("dark-mode", "light");
-  } else {
-    const value = localStorage.getItem("dark-mode");
-    value == "dark"
-      ? body.classList.add("dark-mode")
-      : body.classList.remove("dark-mode");
-  }
-});
-// ----------------------*** hamburger menu ***----------------------
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
-});
-document.querySelectorAll(".nav-link").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-  })
-);
 
 // ----------------------*** Get Data from API ***----------------------
 function getData(input, username, img, repositories, following, followers) {

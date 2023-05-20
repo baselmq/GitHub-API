@@ -1,5 +1,3 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
 // Use destructuring to assign variables to DOM elements
 const usernameInput = document.getElementById("search-user");
 const form = document.querySelector("form");
@@ -11,8 +9,6 @@ const repoList = document.querySelector(".repositories");
 const follower = document.querySelectorAll(".span-follow")[0];
 const following = document.querySelectorAll(".span-follow")[1];
 const locationUser = document.getElementsByClassName("location")[0];
-const darkMode = document.getElementById("dark-mode");
-const darkModeMobile = document.getElementById("dark-mode-mobile");
 
 // Search users
 const clientID = "e9d4d0c3f60e969327c8";
@@ -29,8 +25,7 @@ form.addEventListener("submit", async function (e) {
   const user = usernameInput.value.trim();
   if (user != "") {
     getUser(user);
-  }else{
-    
+  } else {
   }
 });
 
@@ -113,26 +108,3 @@ function dotLanguageColor(lang) {
       return "#00B4AB00";
   }
 }
-
-// ----------------------*** Dark Mode ***----------------------
-darkMode.addEventListener("click", function () {
-  const body = document.body;
-  body.classList.toggle("dark-mode");
-});
-darkModeMobile.addEventListener("click", function () {
-  const body = document.body;
-  body.classList.toggle("dark-mode");
-});
-
-// ----------------------*** hamburger menu ***----------------------
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav-link").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-  })
-);

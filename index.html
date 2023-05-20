@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/icon/github-mark.svg" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>GitHub</title>
+  </head>
+  <body>
+    <!-- -------------*** Header *** ------------- -->
+    <header>
+      <nav class="navbar">
+        <div class="hamburger">
+          <img src="assets/icon/menu.svg" alt="menu" />
+        </div>
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/icon/github-mark-white.svg" alt="logo" />
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <form role="search">
+              <div class="search-bar">
+                <img src="assets/icon/search.svg" alt="icon-search" />
+                <input
+                  type="text"
+                  placeholder="Search or jump to..."
+                  id="search-user"
+                />
+                <img src="assets/icon/slash.svg" alt="icon-slash" />
+              </div>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Pull requests</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Issues</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Codespaces</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/comparison.html" class="nav-link">Comparison</a>
+          </li>
+        </ul>
+        <!-- nav 2 -->
+        <ul class="nav-right display-none">
+          <li id="dark-mode">
+            <img src="assets/icon/dark-mode.svg" alt="dark-img" id="dark-img" />
+          </li>
+          <li class="notification">
+            <img src="assets/icon/bell.svg" alt="notification" />
+          </li>
+          <li>
+            <img src="assets/icon/plus.svg" alt="plus" id="plus" />
+            <img src="assets/icon/dropdown2.svg" alt="dropdown" id="dropdown" />
+          </li>
+          <li>
+            <img
+              src="assets/image/my-image.png"
+              alt="user-img"
+              id="nav-user-img"
+            />
+            <img src="assets/icon/dropdown2.svg" alt="dropdown" id="dropdown" />
+          </li>
+        </ul>
+        <!-- mobile -->
+        <div class="mobile-right">
+          <div>
+            <img src="assets/icon/bell.svg" alt="notification" />
+            <span id="dark-mode-mobile">
+              <img src="assets/icon/dark-mode.svg" alt="dark-img" id="dark-img"
+            /></span>
+          </div>
+        </div>
+        <!-- <div class="hamburger">
+            <img src="assets/icon/menu.svg" alt="menu" />
+          </div> -->
+      </nav>
+    </header>
+
+    <!-- -------------*** Main *** ------------- -->
+    <main class="main">
+      <!-- sidebar -->
+      <div class="sidebar">
+        <div class="profile-user">
+          <img src="assets/image/my-image.png" alt="" id="user-image" />
+          <div class="user-div">
+            <span class="name-user">Basel Qarqa</span>
+            <span id="user-name">baselmq</span>
+          </div>
+        </div>
+        <div class="user-info">
+          <div class="btn-edit">
+            <span>Edit profile</span>
+          </div>
+          <div class="follow">
+            <span class="span-follow">
+              <img src="assets/icon/user.svg" alt="follower" />1 follower
+            </span>
+            <span class="span-follow"> . 5 following</span>
+          </div>
+          <div class="location"></div>
+        </div>
+      </div>
+      <!-- repositories -->
+      <div class="container">
+        <div class="UnderlineNav">
+          <div>
+            <img src="assets/icon/OverView.svg" alt="Overview" /> Overview
+          </div>
+          <div>
+            <img
+              src="assets/icon/Repositories.svg"
+              alt="Repositories"
+            />Repositories
+          </div>
+          <div><img src="assets/icon/Project.svg" alt="Project" />Project</div>
+          <div><img src="assets/icon/Package.svg" alt="Package" />Package</div>
+          <div><img src="assets/icon/Stars.svg" alt="Stars" />Stars</div>
+        </div>
+        <div class="Popular-repositories">
+          <div>
+            <span>Popular repositories</span>
+            <span>Customize your pins</span>
+          </div>
+          <div class="repositories"></div>
+        </div>
+      </div>
+      <div class="space-bottom"></div>
+    </main>
+  </body>
+  <script src="js/script.js"></script>
+</html>

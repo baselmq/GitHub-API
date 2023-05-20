@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300;400;500&display=swap");
+:root {
+  /* Light mode colors */
+  --background-color: #ffffff;
+  --text-color: #161b22;
+  --accent-color: #161b22;
+  --secondary-color: #f3f4f6;
+  --close-img: url("../assets/icon/close-black.svg");
+
+  /* Dark mode colors */
+  --background-color-dark: #010409;
+  --text-color-dark: #dee8ee;
+  --accent-color-dark: #dee8ee;
+  --secondary-color-dark: #14171b;
+  --close-img-dark: url("../assets/icon/close-white.svg");
+}
+
+/* Dark mode */
+body.dark-mode {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --close-img: var(--close-img-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+}
+body {
+  background-color: var(--background-color);
+}
+/* ----------*** main continuer ***---------- */
+.continuer {
+  margin: 25px 10%;
+  position: relative;
+  perspective: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card {
+  width: 450px;
+  text-align: center;
+  margin: 10px 0;
+  padding: 30px;
+  border-radius: 15px;
+  font-size: 18px;
+  position: relative;
+}
+.right {
+  background-color: var(--secondary-color);
+}
+
+.left {
+  background-color: var(--secondary-color);
+}
+.center {
+  text-align: center;
+}
+
+/* ----------*** input field ***---------- */
+#input-one,
+#input-two {
+  border: none;
+  outline: none;
+  color: #161b22;
+  border-radius: 50px;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+}
+#input-one::placeholder {
+  color: #161b22;
+}
+#input-two::placeholder {
+  color: #161b22;
+}
+/* ----------*** image ***---------- */
+.user-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+}
+
+/* ----------*** children card ***---------- */
+.card > div {
+  margin-bottom: 15px;
+}
+
+.username {
+  font-size: 20px;
+  margin-top: 25px;
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+
+#vs-comparison {
+  padding: 30px;
+  display: block;
+  font-size: 10rem;
+  font-family: "Merienda", cursive;
+}
+/* ----------*** button ***---------- */
+#btn-comparison {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  margin-bottom: 25px;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, 100%);
+}
+.close {
+  visibility: hidden;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: 0.3s;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.close-img {
+  background-image: var(--close-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+.close-img:hover {
+  background-image: url("../assets/icon/close-red.svg");
+  transition: 0.3s;
+}
+.close.active {
+  visibility: visible;
+  transition-delay: 5s;
+}
+/* ----------*** Mobile ***---------- */
+@media (max-width: 768px) {
+  .continuer {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 80px;
+  }
+  .card {
+    width: 90%;
+    margin: 20px 0;
+    padding: 20px;
+  }
+  .right {
+    position: initial;
+  }
+  .left {
+    position: initial;
+  }
+  .user-image {
+    width: 150px;
+    height: 150px;
+  }
+  .username {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  #input-one,
+  #input-two {
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+  }
+  #btn-comparison {
+    position: absolute;
+    top: initial;
+    bottom: -40px;
+    right: 50%;
+    transform: translate(50%, 100%);
+  }
+  #vs-comparison {
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+    padding: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1117px) {
+  .continuer {
+    justify-content: center;
+  }
+  .card {
+    width: 400px;
+    margin: 20px 0;
+    padding: 20px;
+  }
+  .right {
+    position: initial;
+  }
+  .left {
+    position: initial;
+  }
+  .user-image {
+    width: 150px;
+    height: 150px;
+  }
+  .username {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  #input-one,
+  #input-two {
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+  }
+  #vs-comparison {
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+    padding: 0;
+    margin: 50px;
+  }
+}
+
+/* ----------*** confetti ***---------- */
+#my-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  visibility: hidden;
+  pointer-events: none;
+}
+#my-canvas.active {
+  transition-delay: 2s;
+  visibility: visible;
+}
+@media (max-width: 768px) {
+  #my-canvas {
+    height: 80vh;
+  }
+}
+/* ----------*** toast ***---------- */
+#toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #ff4640;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: #ffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  position: absolute;
+  z-index: 1;
+  right: 50%;
+  top: 50px;
+  transform: translate(50%, 50%);
+  font-size: 16px;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}

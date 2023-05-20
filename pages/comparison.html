@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/icon/github-mark.svg"
+    />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/comparison.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <title>Comparison</title>
+  </head>
+  <body>
+    <!-- -------------*** Header *** ------------- -->
+    <header>
+      <nav class="navbar">
+        <div class="hamburger">
+          <img src="../assets/icon/menu.svg" alt="menu" />
+        </div>
+        <div class="logo">
+          <a href="../index.html">
+            <img src="../assets/icon/github-mark-white.svg" alt="logo" />
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <form role="search">
+              <div class="search-bar">
+                <img src="../assets/icon/search.svg" alt="icon-search" />
+                <input
+                  type="text"
+                  placeholder="Search or jump to..."
+                  id="search-user"
+                />
+                <img src="../assets/icon/slash.svg" alt="icon-slash" />
+              </div>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Pull requests</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Issues</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Codespaces</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a href="comparison.html" class="nav-link">Comparison</a>
+          </li>
+        </ul>
+        <!-- nav 2 -->
+        <ul class="nav-right display-none">
+          <li id="dark-mode">
+            <img
+              src="../assets/icon/dark-mode.svg"
+              alt="dark-img"
+              id="dark-img"
+            />
+          </li>
+          <li class="notification">
+            <img src="../assets/icon/bell.svg" alt="notification" />
+          </li>
+          <li>
+            <img src="../assets/icon/plus.svg" alt="plus" />
+            <img
+              src="../assets/icon/dropdown2.svg"
+              alt="dropdown"
+              id="dropdown"
+            />
+          </li>
+          <li>
+            <img
+              src="../assets/image/my-image.png"
+              alt="user-img"
+              id="nav-user-img"
+            />
+            <img
+              src="../assets/icon/dropdown2.svg"
+              alt="dropdown"
+              id="dropdown"
+            />
+          </li>
+        </ul>
+        <!-- mobile -->
+        <div class="mobile-right">
+          <div>
+            <img src="../assets/icon/bell.svg" alt="notification" />
+            <span id="dark-mode-mobile">
+              <img
+                src="../assets/icon/dark-mode.svg"
+                alt="dark-img"
+                id="dark-img"
+            /></span>
+          </div>
+        </div>
+        <!-- <div class="hamburger">
+                  <img src="assets/icon/menu.svg" alt="menu" />
+                </div> -->
+      </nav>
+    </header>
+    <!-- toast -->
+    <div id="toast"></div>
+
+    <!-- continuer -->
+    <div class="continuer">
+      <!-- ------------------- *** left *** ------------------- -->
+      <div class="left card">
+        <div class="close"><div class="close-img"></div></div>
+        <form class="form" role="search">
+          <input id="input-one" type="text" placeholder="Enter the username" />
+        </form>
+        <img
+          src="../assets/image/one.svg"
+          alt="image-user"
+          class="user-image"
+        />
+        <div class="username">Username One</div>
+        <div class="repos">Repositories</div>
+        <div class="following">Following</div>
+        <div class="followers">Followers</div>
+      </div>
+
+      <!-- ------------------- *** center *** ------------------- -->
+      <div class="center">
+        <!-- for  desktop-->
+        <button id="btn-comparison">Comparison</button>
+        <div id="vs-comparison">vs</div>
+      </div>
+
+      <!-- ------------------- *** right *** ------------------- -->
+      <div class="right card">
+        <div class="close"><div class="close-img"></div></div>
+        <form class="form" role="search">
+          <input id="input-two" type="text" placeholder="Enter the username" />
+        </form>
+        <img
+          src="../assets/image/two.svg"
+          alt="image-user"
+          class="user-image"
+        />
+        <div class="username">Username Two</div>
+        <div class="repos">Repositories</div>
+        <div class="following">Following</div>
+        <div class="followers">Followers</div>
+      </div>
+      <!-- ------------------- ***   confetti *** ------------------- -->
+      <canvas id="my-canvas"></canvas>
+    </div>
+  </body>
+  <script src="../js/index.min.js"></script>
+  <script src="../js/comparison.js"></script>
+</html>

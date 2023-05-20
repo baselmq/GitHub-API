@@ -1,0 +1,290 @@
+:root {
+  /* Light mode colors */
+  --background-color: #ffffff;
+  --text-color: #161b22;
+  --accent-color: #2f81f7;
+  --secondary-color: #7d8590;
+  --border-color: #c2c3c5;
+  --button-color: #f6f8fa;
+
+  /* Dark mode colors */
+  --background-color-dark: #0d1117;
+  --text-color-dark: #c9d1d9;
+  --accent-color-dark: #2f81f7;
+  --secondary-color-dark: #7d8590;
+  --border-color-dark: #33383f;
+  --button-color-dark: #21262d;
+}
+
+/* Dark mode */
+body.dark-mode {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --border-color: var(--border-color-dark);
+  --button-color: var(--button-color-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text-color);
+}
+
+/* -------------------------*** Body ***------------------------- */
+.main {
+  background-color: var(--background-color);
+  padding: 40px 140px;
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  gap: 18px;
+  position: relative;
+  /* height: 95vh; */
+}
+.space-bottom {
+  padding: 290px 0;
+}
+/* .sidebar {
+  grid-column: 1/2;
+  color: var(--text-color);
+} */
+
+.profile-user > img {
+  position: relative;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  z-index: 10;
+  margin-top: 5px;
+}
+.sidebar .name-user {
+  display: block;
+  font-size: 25px;
+  margin-top: 20px;
+  color: var(--text-color);
+}
+
+.sidebar #user-name {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+  margin-top: 5px;
+  color: var(--secondary-color);
+}
+
+.sidebar .btn-edit {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  width: 300px;
+  margin-top: 20px;
+}
+
+.container {
+  width: 100%;
+}
+
+.follow {
+  font-size: 14px;
+  display: flex;
+  margin-top: 15px;
+  color: var(--text-color);
+}
+
+.follow span {
+  display: flex;
+  align-items: center;
+}
+
+.follow span:first-child {
+  margin-right: 8px;
+}
+
+.follow img {
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+}
+
+/* -------------------------*** repositories ***------------------------- */
+.Popular-repositories > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.Popular-repositories > div:first-child span:last-child {
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.repositories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  color: var(--accent-color);
+}
+
+.repo {
+  color: var(--text-color);
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  height: 100px;
+  padding: 15px;
+}
+
+.name-repo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-repo span {
+  color: var(--accent-color);
+}
+
+.name-repo div {
+  font-size: 12px;
+  border-radius: 15px;
+  font-weight: 500;
+  padding: 5px 8px;
+  border: 1px solid var(--border-color);
+  color: var(--secondary-color);
+}
+
+.lang-programming {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+.UnderlineNav {
+  display: flex;
+  color: var(--text-color);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.UnderlineNav::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid var(--border-color);
+  top: 85px;
+  left: -5px;
+  width: 100%;
+}
+
+.UnderlineNav div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 12px;
+  padding: 10px;
+}
+
+.UnderlineNav div img {
+  margin-right: 10px;
+}
+.lang-programming span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  margin-right: 4px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.location img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+@media (max-width: 768px) {
+  .main {
+    display: block;
+    padding: 20px 15px;
+  }
+  .profile-user {
+    display: flex;
+    align-items: center;
+  }
+  .profile-user img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  .profile-user div span {
+    display: block;
+  }
+  .sidebar .name-user {
+    font-size: 25px;
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+
+  .sidebar #user-name {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+  .sidebar .btn-edit {
+    width: 100%;
+  }
+  .UnderlineNav {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .UnderlineNav::after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid var(--border-color);
+    top: 280px;
+    left: -5px;
+    width: 100%;
+  }
+  .user-info {
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .main {
+    padding: 40px 30px;
+  }
+  .profile-user {
+    margin-right: 10px;
+  }
+  .profile-user > img {
+    width: 200px;
+    height: 200px;
+  }
+  .sidebar .btn-edit {
+    width: 200px;
+  }
+  .UnderlineNav {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .Popular-repositories {
+    width: 525px;
+  }
+  .repositories {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+  }
+}

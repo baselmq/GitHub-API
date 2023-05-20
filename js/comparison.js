@@ -27,6 +27,7 @@ const closeLeft = document.querySelectorAll(".close")[0];
 const closeRight = document.querySelectorAll(".close")[1];
 
 const confettiGen = document.getElementById("my-canvas");
+const body = document.body;
 
 // responsive
 var mobileScreenSize = window.matchMedia("(max-width: 700px)");
@@ -78,14 +79,32 @@ closeRight.addEventListener("click", function () {
 });
 // ----------------------*** Dark Mode ***----------------------
 darkMode.addEventListener("click", function () {
-  const body = document.body;
   body.classList.toggle("dark-mode");
+  setThemeInLocalStorage();
 });
 darkModeMobile.addEventListener("click", function () {
-  const body = document.body;
   body.classList.toggle("dark-mode");
+  setThemeInLocalStorage();
 });
 
+function setThemeInLocalStorage() {
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("dark-mode", "dark");
+  } else {
+    localStorage.setItem("dark-mode", "light");
+  }
+}
+
+window.addEventListener("load", function () {
+  if (localStorage.length == 0) {
+    localStorage.setItem("dark-mode", "light");
+  } else {
+    const value = localStorage.getItem("dark-mode");
+    value == "dark"
+      ? body.classList.add("dark-mode")
+      : body.classList.remove("dark-mode");
+  }
+});
 // ----------------------*** hamburger menu ***----------------------
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
@@ -141,74 +160,70 @@ function getData(input, username, img, repositories, following, followers) {
 function checkWinner() {
   const reposCountOne = parseInt(inputOne.getAttribute("data-repos")) || 0;
   const reposCountTwo = parseInt(inputTwo.getAttribute("data-repos")) || 0;
+
   //   responsive mobile
   if (mobileScreenSize.matches) {
     if (reposCountOne > reposCountTwo) {
-      devLeft.style = ` position: absolute; top:0; transform: translate3d(0, 18%,20px); transition: 2s;`;
-      devRight.style.display = "none";
-      devCenter.style.display = "none";
-      inputOne.style.display = "none";
-      confettiGen.classList.add("active");
-      closeLeft.classList.add("active");
+      setLeftStyle("0, 18%,20px", "0", "top: 0");
     } else if (reposCountTwo > reposCountOne) {
-      devRight.style = `position: absolute; top:0; transform: translate3d(0, 18%,20px); transition: 2s;`;
-      devLeft.style.display = "none";
-      devCenter.style.display = "none";
-      inputTwo.style.display = "none";
-      confettiGen.classList.add("active");
-      closeRight.classList.add("active");
+      setRightStyle("0, 18%,20px", "0", "top: 0");
     } else {
-      vsComparison.innerText = "It's a tie!";
-      vsComparison.style.fontSize = "40px";
-      // btnComparison.style.display = "none";
+      setTieStyles("40px");
     }
   }
-  //   responsive Desktop
+  //   responsive small Screen
   else if (smallScreenSize.matches) {
     if (reposCountOne > reposCountTwo) {
-      devLeft.style = `
-      transform: translate3d(50%, 0, 100px); position: absolute; top:15px; right: 50%; transition: 2s;`;
-      devRight.style.display = "none";
-      devCenter.style.display = "none";
-      inputOne.style.display = "none";
-      confettiGen.classList.add("active");
-      closeLeft.classList.add("active");
+      setLeftStyle("50%, 0, 100px", "15px", "right: 50%");
     } else if (reposCountTwo > reposCountOne) {
-      devRight.style = `
-      transform: translate3d(-50%, 0, 100px); position: absolute;  top:15px; left: 50%; transition: 2s;`;
-      devLeft.style.display = "none";
-      devCenter.style.display = "none";
-      inputTwo.style.display = "none";
-      confettiGen.classList.add("active");
-      closeRight.classList.add("active");
+      setRightStyle("-50%, 0, 100px", "15px", " left: 50%");
     } else {
-      vsComparison.innerText = "It's a tie!";
-      vsComparison.style.fontSize = "40px";
-      // btnComparison.style.display = "none";
+      setTieStyles("40px");
     }
-  } else {
+  } //   responsive Desktop
+  else {
     if (reposCountOne > reposCountTwo) {
-      devLeft.style = `
-            transform: translate3d(50%, 0, 100px); position: absolute; top:15px; right: 50%; transition: 2s;`;
-      devRight.style.display = "none";
-      devCenter.style.display = "none";
-      inputOne.style.display = "none";
-      confettiGen.classList.add("active");
-      closeLeft.classList.add("active");
+      setLeftStyle("50%, 0, 100px", "15px", "right: 50%");
     } else if (reposCountTwo > reposCountOne) {
-      devRight.style = `
-            transform: translate3d(-50%, 0, 100px); position: absolute;  top:15px; left: 50%; transition: 2s;`;
-      devLeft.style.display = "none";
-      devCenter.style.display = "none";
-      inputTwo.style.display = "none";
-      confettiGen.classList.add("active");
-      closeRight.classList.add("active");
+      setRightStyle("-50%, 0, 100px", "15px", "left: 50%");
     } else {
-      vsComparison.innerText = "It's a tie!";
-      vsComparison.style.fontSize = "60px";
-      // btnComparison.style.display = "none";
+      setTieStyles("60px");
     }
   }
+}
+
+function setLeftStyle(translation, top, position) {
+  devLeft.style = `
+  transform: translate3d(${translation});
+  position: absolute;
+  top: ${top};
+  ${position};
+  transition: 2s;
+`;
+  devRight.style.display = "none";
+  devCenter.style.display = "none";
+  inputOne.style.display = "none";
+  confettiGen.classList.add("active");
+  closeLeft.classList.add("active");
+}
+
+function setRightStyle(translation, top, position) {
+  devRight.style = `
+  transform: translate3d(${translation});
+  position: absolute;
+  top: ${top};
+  ${position};
+  transition: 2s;
+`;
+  devLeft.style.display = "none";
+  devCenter.style.display = "none";
+  inputTwo.style.display = "none";
+  confettiGen.classList.add("active");
+  closeRight.classList.add("active");
+}
+function setTieStyles(size) {
+  vsComparison.innerText = "It's a tie!";
+  vsComparison.style.fontSize = size;
 }
 // ----------------------*** toast ***----------------------
 function toast(message) {
@@ -224,73 +239,3 @@ function toast(message) {
 var confettiSettings = { target: "my-canvas" };
 var confetti = new ConfettiGenerator(confettiSettings);
 confetti.render();
-
-// function checkWinner() {
-//   const reposCountOne = parseInt(inputOne.getAttribute("data-repos")) || 0;
-//   const reposCountTwo = parseInt(inputTwo.getAttribute("data-repos")) || 0;
-
-//   const isMobileScreen = mobileScreenSize.matches;
-//   const isSmallScreen = smallScreenSize.matches;
-
-//   if (isMobileScreen) {
-//     handleMobileScreen();
-//   } else if (isSmallScreen) {
-//     handleSmallScreen();
-//   } else {
-//     handleDesktopScreen();
-//   }
-
-//   function handleMobileScreen() {
-//     if (reposCountOne > reposCountTwo) {
-//       setWinnerStyles(devLeft, inputOne, confettiGen, closeLeft);
-//       hideElements(devRight, devCenter, inputTwo);
-//     } else if (reposCountTwo > reposCountOne) {
-//       setWinnerStyles(devRight, inputTwo, confettiGen, closeRight);
-//       hideElements(devLeft, devCenter, inputOne);
-//     } else {
-//       setTieStyles();
-//     }
-//   }
-
-//   function handleSmallScreen() {
-//     if (reposCountOne > reposCountTwo) {
-//       setWinnerStyles(devLeft, inputOne, confettiGen, closeLeft);
-//       hideElements(devRight, devCenter, inputTwo);
-//     } else if (reposCountTwo > reposCountOne) {
-//       setWinnerStyles(devRight, inputTwo, confettiGen, closeRight);
-//       hideElements(devLeft, devCenter, inputOne);
-//     } else {
-//       setTieStyles();
-//     }
-//   }
-
-//   function handleDesktopScreen() {
-//     if (reposCountOne > reposCountTwo) {
-//       setWinnerStyles(devLeft, inputOne, confettiGen, closeLeft);
-//       hideElements(devRight, devCenter, inputTwo);
-//     } else if (reposCountTwo > reposCountOne) {
-//       setWinnerStyles(devRight, inputTwo, confettiGen, closeRight);
-//       hideElements(devLeft, devCenter, inputOne);
-//     } else {
-//       setTieStyles();
-//     }
-//   }
-
-//   function setWinnerStyles(winner, input, confetti, close) {
-//     winner.style = `position: absolute; top:0; transform: translate3d(0, 18%,20px); transition: 2s;`;
-//     input.style.display = "none";
-//     confetti.classList.add("active");
-//     close.classList.add("active");
-//   }
-
-//   function hideElements(...elements) {
-//     for (const element of elements) {
-//       element.style.display = "none";
-//     }
-//   }
-
-//   function setTieStyles() {
-//     vsComparison.innerText = "It's a tie!";
-//     vsComparison.style.fontSize = isMobileScreen ? "40px" : "60px";
-//   }
-// }

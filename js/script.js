@@ -27,63 +27,73 @@ getUser(user);
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
   const user = usernameInput.value.trim();
-  getUser(user);
+  if (user != "") {
+    getUser(user);
+  }else{
+    
+  }
 });
 
 // ----------------------*** Get Data from API ***----------------------
-async function getUser(user) {
+function getUser(user) {
+  // Use template literals instead of string concatenation
   const URL = `${baseUrl}search/users?q=${user}&client_id=${clientID}&client_secret=${clientSecret}`;
 
-  try {
-    const response = await fetch(URL, {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-      },
+  fetch(URL, {
+    headers: {
+      Accept: "application/vnd.github.v3+json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Use dot notation to set the attributes and textContent of DOM elements
+      fetch(`${data.items[0].url}`)
+        .then((response) => response.json())
+        .then((userData) => {
+          imageUser.src = userData.avatar_url;
+          imageUserNav.src = userData.avatar_url;
+          nameUser.textContent = userData.name;
+          username.textContent = userData.login;
+          follower.innerHTML = ` <img src="assets/icon/user.svg" alt="follower" /> ${userData.followers} follower `;
+          following.textContent = ` ${userData.following} following`;
+          locationUser.innerHTML = `${
+            userData.location == null
+              ? ""
+              : `<img src="assets/icon/location.svg" alt="location" /> ${userData.location}`
+          }   `;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      // ------------------------------*** Get repositories ***------------------------------
+      const repos = data.items[0].repos_url;
+      fetch(`${repos}?per_page=100`)
+        .then((response) => response.json())
+        .then((reposData) => {
+          document.querySelectorAll(".repo").forEach((el) => el.remove());
+          for (let i = 0; i < 6; i++) {
+            const listItem = document.createElement("div");
+            listItem.classList.add("repo");
+            const color = dotLanguageColor(reposData[i].language);
+            listItem.innerHTML = `
+            <div class="name-repo">
+            <span>${reposData[i].name}</span>
+            <div>public</div>
+            </div>
+            <div class="lang-programming"><span class="dot-lang" style="background-color:${color}"></span>${
+              reposData[i].language == null ? "" : reposData[i].language
+            }</div>`;
+            repoList.appendChild(listItem);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    })
+    .catch((error) => {
+      console.error(error);
     });
-    const data = await response.json();
-
-    const repos = data.items[0].repos_url;
-
-    const userDataResponse = await fetch(`${data.items[0].url}`);
-    const userData = await userDataResponse.json();
-
-    // Use dot notation to set the attributes and textContent of DOM elements
-    imageUser.src = userData.avatar_url;
-    imageUserNav.src = userData.avatar_url;
-    nameUser.textContent = userData.name;
-    username.textContent = userData.login;
-    follower.innerHTML = ` <img src="assets/icon/user.svg" alt="follower" /> ${userData.followers} follower `;
-    following.textContent = ` ${userData.following} following`;
-    locationUser.innerHTML = `${
-      userData.location == null
-        ? ""
-        : `<img src="assets/icon/location.svg" alt="location" /> ${userData.location}`
-    }   `;
-
-    // ------------------------------*** Get repositories ***------------------------------
-    const reposResponse = await fetch(`${repos}?per_page=100`);
-    const reposData = await reposResponse.json();
-
-    document.querySelectorAll(".repo").forEach((el) => el.remove());
-    for (let i = 0; i < 6; i++) {
-      const listItem = document.createElement("div");
-      listItem.classList.add("repo");
-      const color = dotLanguageColor(reposData[i].language);
-      listItem.innerHTML = `
-        <div class="name-repo">
-          <span>${reposData[i].name}</span>
-          <div>public</div>
-        </div>
-        <div class="lang-programming"><span class="dot-lang" style="background-color:${color}"></span>${
-        reposData[i].language == null ? "" : reposData[i].language
-      }</div>
-      `;
-      repoList.appendChild(listItem);
-    }
-  } catch (error) {
-    console.error(error);
-    // Add appropriate error handling here
-  }
 }
 
 // ----------------------*** Select the color language ***----------------------

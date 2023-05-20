@@ -33,7 +33,9 @@ body.dark-mode {
   font-family: "Segoe UI", sans-serif;
   color: var(--text-color);
 }
-
+body {
+  background-color: var(--background-color);
+}
 /* -------------------------*** Body ***------------------------- */
 .main {
   background-color: var(--background-color);
@@ -44,9 +46,9 @@ body.dark-mode {
   position: relative;
   /* height: 95vh; */
 }
-.space-bottom {
+/* .space-bottom {
   padding: 290px 0;
-}
+} */
 /* .sidebar {
   grid-column: 1/2;
   color: var(--text-color);
@@ -286,5 +288,65 @@ body.dark-mode {
   .repositories {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 10px;
+  }
+}
+
+/* -------------------------*** Footer ***------------------------- */
+.footer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 25px 0;
+  margin: 40px 140px 0;
+  font-size: 12px;
+  border-top: 1px solid var(--border-color);
+}
+.container-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  width: 63rem;
+}
+.logo-foot {
+  display: flex;
+  align-items: center;
+  margin: 10px 60px 10px 0;
+}
+.logo-foot span {
+  display: inline-block;
+  margin-left: 10px;
+}
+.footer img {
+  width: 25px;
+  height: 25px;
+}
+.footer ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  width: 100%;
+  max-width: 800px;
+}
+.footer li {
+  margin: 10px 10px;
+}
+
+.footer a {
+  color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 0;
+    margin: 0 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer {
+    padding: 40px 0;
+    margin: 0 30px;
   }
 }

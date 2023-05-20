@@ -41,29 +41,92 @@ body {
   position: relative;
   perspective: 800px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .card {
   width: 450px;
   text-align: center;
-  margin: 10px 0;
-  padding: 30px;
   border-radius: 15px;
   font-size: 18px;
+  margin: 10px 0;
+
   position: relative;
+}
+.elements-card {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+}
+
+.center {
+  text-align: center;
+  width: 30%;
 }
 .right {
   background-color: var(--secondary-color);
+  overflow: hidden;
 }
-
+/* .right .elements-card > div {
+  color: #709193;
+} */
+.right::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 150%;
+  top: -120px;
+  right: 15%;
+  background: linear-gradient(#709193, #709193);
+  animation: rotate 4s linear infinite;
+}
+.right::after {
+  content: "";
+  position: absolute;
+  background: var(--secondary-color);
+  inset: 5px;
+  border-radius: 10px;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .left {
   background-color: var(--secondary-color);
+  overflow: hidden;
 }
-.center {
-  text-align: center;
+/* .left .elements-card > div {
+  color: #5c6bc0;
+} */
+.left::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 150%;
+  top: -120px;
+  right: 15%;
+  background: linear-gradient(#5c6bc0, #5c6bc0);
+  animation: rotate 4s linear infinite;
 }
-
+.left::after {
+  content: "";
+  position: absolute;
+  background: var(--secondary-color);
+  inset: 5px;
+  border-radius: 10px;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* ----------*** input field ***---------- */
 #input-one,
 #input-two {
@@ -71,8 +134,10 @@ body {
   outline: none;
   color: #161b22;
   border-radius: 50px;
-  padding: 10px 30px;
+  padding: 8px 30px;
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 300px;
 }
 #input-one::placeholder {
   color: #161b22;
@@ -87,15 +152,15 @@ body {
   border-radius: 50%;
 }
 
-/* ----------*** children card ***---------- */
-.card > div {
+/* ----------*** elements-cardren card ***---------- */
+.elements-card > div {
   margin-bottom: 15px;
 }
 
 .username {
   font-size: 20px;
   margin-top: 25px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-weight: 500;
 }
 
@@ -146,6 +211,7 @@ body {
   visibility: visible;
   transition-delay: 5s;
 }
+
 /* ----------*** Mobile ***---------- */
 @media (max-width: 768px) {
   .continuer {
@@ -156,17 +222,22 @@ body {
     flex-direction: column;
     margin-bottom: 80px;
   }
+  .elements-card {
+    padding: 30px 20px;
+  }
   .card {
     width: 90%;
     margin: 20px 0;
-    padding: 20px;
   }
-  .right {
+  .center {
+    width: auto;
+  }
+  /* .right {
     position: initial;
   }
   .left {
     position: initial;
-  }
+  } */
   .user-image {
     width: 150px;
     height: 150px;
@@ -182,6 +253,8 @@ body {
     border-radius: 50px;
     padding: 8px 12px;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
   }
   #btn-comparison {
     position: absolute;
@@ -200,21 +273,32 @@ body {
 @media (min-width: 768px) and (max-width: 1117px) {
   .continuer {
     justify-content: center;
+    margin: 25px 5%;
   }
+  .elements-card {
+    padding: 30px 20px;
+  }
+  .elements-card > div {
+    margin-bottom: 15px;
+    
+  }
+
   .card {
     width: 400px;
     margin: 20px 0;
-    padding: 20px;
   }
-  .right {
+  .center {
+    width: auto;
+  }
+  /* .right {
     position: initial;
   }
   .left {
     position: initial;
-  }
+  } */
   .user-image {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
   }
   .username {
     font-size: 18px;
@@ -227,6 +311,8 @@ body {
     border-radius: 50px;
     padding: 8px 12px;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
   }
   #vs-comparison {
     display: flex;

@@ -53,7 +53,10 @@ formTwo.addEventListener("submit", function (e) {
 
 // ----------------------*** Button Comparison ***----------------------
 btnComparison.addEventListener("click", function () {
-  if (inputOne.value.trim() != "" && inputTwo.value.trim() != "") {
+  if (
+    inputOne.value.split(" ").join("") != "" &&
+    inputTwo.value.split(" ").join("") != ""
+  ) {
     if (inputOne.classList.contains("data-exist")) {
       if (inputTwo.classList.contains("data-exist")) checkWinner();
       else toast(messageEnterRight, "#709193");
@@ -75,7 +78,7 @@ closeRight.addEventListener("click", function () {
 
 // ----------------------*** Get Data from API ***----------------------
 function getData(input, username, img, repositories, following, followers) {
-  const user = input.value.trim();
+  const user = input.value.split(" ").join("");
   const URL = `${baseUrl}search/users?q=${user}&client_id=${clientID}&client_secret=${clientSecret}`;
 
   fetch(URL, {
@@ -98,7 +101,7 @@ function getData(input, username, img, repositories, following, followers) {
           // Compare the number of repositories and declare the winner
           const reposCount = data.public_repos;
 
-          if (input.value.trim() != "") {
+          if (input.value.split(" ").join("") != "") {
             input.setAttribute("data-repos", reposCount);
             input.classList.add("data-exist");
           }
